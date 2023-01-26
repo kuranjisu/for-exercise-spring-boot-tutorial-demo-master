@@ -1,0 +1,15 @@
+given: student_id is existing
+when: studentService.getStudentById is executed
+then: return of studentService.getStudentById should be equal to return of studentRepository.findById
+
+given: student_id is non-existing
+when: studentService.getStudentById is executed
+then: studentService.getStudentById will throw a StudentNotFoundException with message "Student with id : <non_existing student_id> doesn't exist."
+
+given: student_id
+when: studentRepository.findById is executed
+then: studentRepository.findById will return a studentEntity that is the same with expectedStudentEntity
+
+given: student Entity
+When: addStudent post request is called
+Then: The request result should return an OK status

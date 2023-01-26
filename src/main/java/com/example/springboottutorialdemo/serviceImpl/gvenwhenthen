@@ -1,0 +1,19 @@
+given: the student id is valid
+when: studentService.getStudentById method is executed
+then: student entity of studentService.getStudentById should equal to the student entity returned by studentRepository
+
+given: the student id is invalid
+when: studentService.getStudentById method is executed
+then: a StudentNotFoundException error should be thrown with error message, "Student with id : <invalid student id> doesn't exist."
+
+-------
+
+given: the student id is valid
+when: studentRepository.findById method is executed
+then: student entity of studentRepository.findById should equal to the student entity from dummy data
+
+-------
+
+given: there is a new student entity
+when: studentController addStudent request is called
+then: its status should be Ok
